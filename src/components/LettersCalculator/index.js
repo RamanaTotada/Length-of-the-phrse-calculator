@@ -3,14 +3,15 @@ import {Component} from 'react'
 import './index.css'
 
 class LettersCalculator extends Component {
-  state = {count: 0}
+  state = {inputPhrase: ''}
 
-  countingLength = () => {
-    this.setState(prevState => ({count: prevState.count + 1}))
+  countingLength = event => {
+    const {value} = event.target
+    this.setState({inputPhrase: value})
   }
 
   render() {
-    const {count} = this.state
+    const {inputPhrase} = this.state
 
     return (
       <div className="background-container">
@@ -28,11 +29,12 @@ class LettersCalculator extends Component {
                 placeholder="Enter the phrase"
                 onChange={this.countingLength}
                 id="input-element-com"
+                value={inputPhrase}
               />
             </div>
 
             <p className="button-style" type="button">
-              No.of letters: {count}
+              No.of letters: {inputPhrase.length}
             </p>
           </div>
 
